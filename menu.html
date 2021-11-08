@@ -22,6 +22,9 @@
         #options h3{
             margin-left: 60px;
         }
+        img{
+            width: 10%;
+        }
     </style>
 </head>
 <body>
@@ -29,8 +32,8 @@
     <h3> <a href="menu.html">menu</a> </h3>  
         <div id="options">
        
-        <h3><a href="">signup</a></h3>
-        <h3><a href="">login</a></h3>
+        <h3><a href="signup.html">signup</a></h3>
+        <h3><a href="login.html">login</a></h3>
     </div>
     </div>
     
@@ -46,20 +49,23 @@
     }
     
     function showdata(data){
-console.log(data)
-
-data.forEach((e)=>{
+let items = data.categories
+items.forEach(function(e){
     console.log(e)
-    let div = document.createElement("div")
-    let description = document.createElement("p")
+let div = document.createElement("div")
 
-description.textcontent = data.strCategoryDescription
 let image = document.createElement("img")
-image.src = data.strCategoryThumb
-div.append(image,description)
+image.src = e.strCategoryThumb
+let description = document.createElement("p")
+
+description.innerHTML = e.strCategoryDescription
+let button = document.createElement("button")
+button.textContent = "add to cart"
+div.append(image,description,button)
 container.append(div)
 
 })
     }
     getdata()
 </script>
+
