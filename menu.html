@@ -34,22 +34,32 @@
     </div>
     </div>
     
-  
+  <div id="container"></div>
 </body>
 </html>
 <script>
+    let container = document.getElementById("container")
     async function getdata(){
-        let res = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
+        let res = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         let data = await res.json()
       showdata(data)
     }
     
     function showdata(data){
 console.log(data)
-// data.forEach((e)=>{
-//     let div = document.createElement("div")
-//     let 
-// })
+
+data.forEach((e)=>{
+    console.log(e)
+    let div = document.createElement("div")
+    let description = document.createElement("p")
+
+description.textcontent = data.strCategoryDescription
+let image = document.createElement("img")
+image.src = data.strCategoryThumb
+div.append(image,description)
+container.append(div)
+
+})
     }
     getdata()
 </script>
